@@ -3,27 +3,37 @@ import java.util.List;
 
 public class Book {
     String title;
-    List<String> paragraphs=new ArrayList<String>();
-    List<String> images=new ArrayList<String>();
-    List<String> tables=new ArrayList<String>();
+    Author author;
+    List<Paragraph> paragraphs=new ArrayList<>();
+    List<Image> images=new ArrayList<>();
+    List<Table> tables=new ArrayList<>();
+    List<Chapter> chapters=new ArrayList<>();
     public Book(){}
 
     public Book(String title){
         this.title=title;
+
     }
 
-    public void createNewParagraph(String paragraph){
+    public void createNewParagraph(Paragraph paragraph){
         paragraphs.add(paragraph);
     }
 
-    public void createNewImage(String image){
+    public int createChapter(String chapter){
+        Chapter addChapter=new Chapter(chapter);
+        chapters.add(addChapter);
+        return chapters.indexOf(addChapter);
+    }
+
+    public void createNewImage(Image image){
         images.add(image);
     }
 
-    public void createNewTable(String table){
+    public void createNewTable(Table table){
         tables.add(table);
     }
 
+    public void addAuthor(Author author){}
 
     public void print() {
         System.out.println( "Book{" +
@@ -32,5 +42,9 @@ public class Book {
                 ", images=" + this.images +
                 ", tables=" + this.tables +
                 '}');
+    }
+
+    public Chapter getChapter(int indexChapterOne) {
+        return chapters.get(indexChapterOne);
     }
 }
