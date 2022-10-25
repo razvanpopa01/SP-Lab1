@@ -1,50 +1,36 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-public class Book {
-    String title;
-    Author author;
-    List<Paragraph> paragraphs=new ArrayList<>();
-    List<Image> images=new ArrayList<>();
-    List<Table> tables=new ArrayList<>();
-    List<Chapter> chapters=new ArrayList<>();
-    public Book(){}
+public class Book extends Section{
+    private String title;
+    private List<Author> authorList = new ArrayList<Author>();
 
-    public Book(String title){
-        this.title=title;
-
+    public Book(String title) {
+        super();
+        this.title = title;
     }
 
-    public void createNewParagraph(Paragraph paragraph){
-        paragraphs.add(paragraph);
+    public void addAuthor(Author authorName)
+    {
+        authorList.add(authorName);
     }
 
-    public int createChapter(String chapter){
-        Chapter addChapter=new Chapter(chapter);
-        chapters.add(addChapter);
-        return chapters.indexOf(addChapter);
+    public void addContent(Element elemente) {
+        listaElemente.add(elemente);
     }
 
-    public void createNewImage(Image image){
-        images.add(image);
+    public void print()
+    {
+        System.out.println("Book:"+title);
+        System.out.println();
+        System.out.println("Authors:");
+        for(int i = 0; i < authorList.size(); i++)
+            authorList.get(i).print();
+        System.out.println();
+        for(int i = 0; i < listaElemente.size(); i++)
+            listaElemente.get(i).print();
     }
 
-    public void createNewTable(Table table){
-        tables.add(table);
-    }
 
-    public void addAuthor(Author author){}
-
-    public void print() {
-        System.out.println( "Book{" +
-                "title='" + this.title + '\'' +
-                ", paragraphs=" + this.paragraphs +
-                ", images=" + this.images +
-                ", tables=" + this.tables +
-                '}');
-    }
-
-    public Chapter getChapter(int indexChapterOne) {
-        return chapters.get(indexChapterOne);
-    }
 }

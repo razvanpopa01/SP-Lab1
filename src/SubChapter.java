@@ -2,42 +2,49 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SubChapter {
-    public String name;
-    public List<Paragraph> paragraphs=new ArrayList<Paragraph>();
-    public List<Image> images=new ArrayList<Image>();
-    public List<Table> tables=new ArrayList<Table>();
-    public SubChapter(){}
-    public SubChapter(String name){this.name=name;}
+    private String name;
+    private List<Paragraph> paragraphList;
+    private List<Image> imageList;
+    private List<Table> tableList;
 
-
-    public void print() {
-        System.out.println("name:"+name);
-
-        System.out.print("Paragraphs:");
-        for(Paragraph i:paragraphs)
-            i.print();
-
-        System.out.print("Images:");
-        for(Image i:images)
-            i.print();
-
-        System.out.print("Tables:");
-        for(Table i:tables)
-            i.print();
+    public SubChapter(String name) {
+        this.name = name;
+        paragraphList = new ArrayList<Paragraph>();
+        imageList = new ArrayList<Image>();
+        tableList = new ArrayList<Table>();
     }
 
-    public void createNewParagraph(String s) {
-        Paragraph newParagraph=new Paragraph(s);
-        paragraphs.add(newParagraph);
+    public void createNewParagraph(String text) {
+        Paragraph paragraph1 = new Paragraph(text);
+        paragraphList.add(paragraph1);
     }
 
-    public void createNewImage(String s) {
-        Image newImage=new Image(s);
-        images.add(newImage);
+    public void createNewImage(String text) {
+        Image image1 = new Image(text);
+        imageList.add(image1);
     }
 
-    public void createNewTable(String s) {
-        Table newTable=new Table(s);
-        tables.add(newTable);
+    public void createNewTable(String text) {
+        Table table1 = new Table(text);
+        tableList.add(table1);
+    }
+
+    public void print()
+    {
+        System.out.print("Subchapter: " + this.name + "\n");
+        for(int i = 0; i < paragraphList.size(); i++)
+        {
+            paragraphList.get(i).print();
+        }
+
+        for(int i = 0; i < imageList.size(); i++)
+        {
+            imageList.get(i).print();
+        }
+
+        for(int i = 0; i < tableList.size(); i++)
+        {
+            tableList.get(i).print();
+        }
     }
 }
