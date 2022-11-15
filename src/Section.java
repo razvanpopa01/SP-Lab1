@@ -2,11 +2,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Section implements Element {
-    private String title;
+    private String tile;
     public List<Element> listaElemente = new ArrayList<Element>();
 
-    public Section(String title) {
-        this.title = title;
+    public Section(String tile) {
+        this.tile = tile;
     }
 
     public Section() {
@@ -15,7 +15,7 @@ public class Section implements Element {
 
     @Override
     public void print() {
-        System.out.println(this.title);
+        System.out.println(this.tile);
         for(int i = 0; i < listaElemente.size(); i++){
             listaElemente.get(i).print();
         }
