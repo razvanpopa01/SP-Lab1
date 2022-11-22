@@ -6,6 +6,6 @@ public class Context {
     }
 
     public String executeStrategy(Paragraph paragraph, Context context){
-        return strategy.render(paragraph, context);
+        return strategy.render(paragraph);
     }
 }

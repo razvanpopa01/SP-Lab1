@@ -43,6 +43,11 @@ public class ImageProxy implements Element, Picture {
     }
 
     @Override
+    public void accept(Visitor visitor) {
+        visitor.visitImageProxy(this);
+    }
+
+    @Override
     public String url() {
         return null;
     }

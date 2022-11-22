@@ -1,10 +1,7 @@
-public class AlignRight implements AlignStrategy{
+public class AlignRight implements AlignStrategy {
+
     @Override
-    public String render(Paragraph p, Context c) {
-        return ": Alignment: Right";
-    }
-
-    public AlignRight() {
-
+    public void render(Paragraph paragraph) {
+        System.out.println("####" + paragraph.getText());
     }
 }

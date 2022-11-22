@@ -1,14 +1,18 @@
 public class Paragraph implements Element
 {
     private String text;
-
+    public AlignStrategy alignStrategy = null;
     public Paragraph(String text) {
         this.text = text;
     }
 
-    public void print()
-    {
-        System.out.println("Paragraph: " + this.text);
+    public void print() {
+        if(alignStrategy == null) {
+            System.out.println("Paragraph: " + this.text);
+        }
+        else {
+            this.alignStrategy.render(this);
+        }
     }
 
     @Override
@@ -26,9 +30,16 @@ public class Paragraph implements Element
         return 0;
     }
 
-    public void setAlignStrategy(AlignStrategy strategy)
-    {
-        Context context = new Context(strategy);
-        this.text = this.text + context.executeStrategy(this, context);
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visitParagraph(this);
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setAlignStrategy(AlignStrategy align) {
+        this.alignStrategy = align;
     }
 }

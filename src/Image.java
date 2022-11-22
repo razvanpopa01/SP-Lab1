@@ -1,12 +1,10 @@
-import java.awt.*;
 import java.util.concurrent.TimeUnit;
 
-public class Image implements Element, Picture {
-    private String imageName;
+public class Image implements Element {
     private String url;
 
-    Image(String name) {
-        imageName = name;
+    public Image(String url) {
+        this.url = url;
         try {
             TimeUnit.SECONDS.sleep(5);
         } catch (InterruptedException e) {
@@ -16,7 +14,7 @@ public class Image implements Element, Picture {
 
     public void print()
     {
-        System.out.println("Image with Name: " + this.imageName);
+        System.out.println("Url: " + this.url);
     }
 
     @Override
@@ -35,12 +33,7 @@ public class Image implements Element, Picture {
     }
 
     @Override
-    public String url() {
-        return null;
-    }
-
-    @Override
-    public Dimension dim() {
-        return null;
+    public void accept(Visitor visitor) {
+        visitor.visitImage(this);
     }
 }
